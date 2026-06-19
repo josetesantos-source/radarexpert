@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assinar — Radar Expert</title>
+  <meta name="description" content="Receba toda semana a curadoria estratégica do Radar Expert no seu e-mail.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="_ds/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/tokens/effects.css">
+
+  <style>
+    @keyframes radarSpin { to { transform: rotate(360deg); } }
+    @keyframes blip1 { 0%,100% { opacity:.18; } 50% { opacity:1; } }
+    @keyframes blip2 { 0%,100% { opacity:.12; } 60% { opacity:.85; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; background:var(--surface-page); font-family:var(--font-sans); color:var(--text-body); -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; }
+    p, h1, h2 { margin:0; }
+    a { color:var(--text-gold); text-underline-offset:3px; }
+
+    /* ── PAGE LAYOUT ── */
+    .page { flex:1; display:grid; grid-template-columns:1fr 1fr; min-height:100vh; }
+    @media(max-width:768px){ .page { grid-template-columns:1fr; } }
+
+    /* ── LEFT PANEL ── */
+    .panel-left {
+      background:var(--surface-inverse);
+      padding:64px 56px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      position:relative; overflow:hidden;
+    }
+    @media(max-width:768px){ .panel-left { padding:48px 32px; } }
+
+    .radar-rings {
+      position:absolute; bottom:-120px; right:-120px;
+      opacity:.05; pointer-events:none;
+    }
+
+    .pl-logo { display:flex; align-items:center; gap:16px; margin-bottom:64px; }
+    .pl-logo a { text-decoration:none; display:flex; align-items:center; gap:16px; }
+    .pl-radar-svg { width:44px; height:44px; flex:none; }
+    .pl-wordmark { font-family:var(--font-display); font-size:28px; letter-spacing:.14em; color:var(--text-on-dark); line-height:1; }
+    .pl-wordmark-sub { font-size:9px; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--accent-on-dark); margin-top:3px; }
+
+    .pl-body { flex:1; display:flex; flex-direction:column; justify-content:center; padding:40px 0; }
+    .pl-eyebrow { font-size:11px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--dourado-400); margin-bottom:20px; }
+    .pl-title { font-family:var(--font-display); font-size:clamp(32px,4vw,48px); color:var(--text-on-dark); line-height:1.12; margin-bottom:24px; }
+    .pl-desc { font-size:16px; line-height:1.72; color:var(--text-on-dark-muted); max-width:380px; margin-bottom:40px; }
+
+    .pl-bullets { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+    .pl-bullet { display:flex; align-items:flex-start; gap:12px; font-size:14px; line-height:1.5; color:var(--text-on-dark-muted); }
+    .pl-bullet-icon { width:20px; height:20px; border-radius:50%; background:rgba(238,184,17,.15); border:1px solid rgba(238,184,17,.3); display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px; }
+    .pl-bullet-icon svg { color:var(--dourado-400); }
+
+    .pl-footer { font-size:12px; color:var(--text-on-dark-muted); opacity:.5; }
+
+    /* ── RIGHT PANEL (FORM) ── */
+    .panel-right {
+      background:var(--surface-page);
+      padding:64px 56px;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    @media(max-width:768px){ .panel-right { padding:48px 32px; } }
+
+    .form-wrap { max-width:420px; width:100%; animation:fadeUp .6s cubic-bezier(.16,1,.3,1) both; }
+
+    .form-title { font-family:var(--font-display); font-size:clamp(22px,3vw,30px); color:var(--text-strong); line-height:1.2; margin-bottom:8px; }
+    .form-sub { font-size:14px; color:var(--text-muted); margin-bottom:36px; line-height:1.6; }
+
+    /* ── FORM FIELDS ── */
+    .field { margin-bottom:20px; }
+    .field-label {
+      display:block; font-size:11px; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--text-muted); margin-bottom:8px;
+    }
+    .field-input {
+      width:100%;
+      background:var(--surface-raised);
+      border:1px solid var(--border-strong);
+      border-radius:10px;
+      padding:13px 16px;
+      font-family:var(--font-sans); font-size:15px; color:var(--text-strong);
+      outline:none; transition:border-color .18s ease, box-shadow .18s ease;
+      -webkit-appearance:none;
+    }
+    .field-input::placeholder { color:var(--text-faint); }
+    .field-input:focus {
+      border-color:var(--dourado-500);
+      box-shadow:0 0 0 3px var(--focus-ring);
+    }
+    .field-input.has-error { border-color:var(--danger); }
+
+    /* WhatsApp field with flag */
+    .field-whats-wrap { position:relative; }
+    .field-whats-prefix {
+      position:absolute; left:14px; top:50%; transform:translateY(-50%);
+      font-size:14px; color:var(--text-muted); pointer-events:none;
+      display:flex; align-items:center; gap:6px;
+    }
+    .field-whats-wrap .field-input { padding-left:72px; }
+
+    /* Select */
+    .field-select {
+      width:100%;
+      background:var(--surface-raised);
+      border:1px solid var(--border-strong);
+      border-radius:10px;
+      padding:13px 16px;
+      font-family:var(--font-sans); font-size:15px; color:var(--text-strong);
+      outline:none; transition:border-color .18s ease, box-shadow .18s ease;
+      cursor:pointer; -webkit-appearance:none; appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237A7872' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 16px center;
+    }
+    .field-select:focus { border-color:var(--dourado-500); box-shadow:0 0 0 3px var(--focus-ring); }
+
+    /* Divider */
+    .form-divider { display:flex; align-items:center; gap:12px; margin:28px 0; }
+    .form-divider-rule { flex:1; height:1px; background:var(--border-subtle); }
+    .form-divider-text { font-size:11px; font-weight:600; letter-spacing:.10em; text-transform:uppercase; color:var(--text-muted); }
+
+    /* Submit */
+    .form-submit {
+      width:100%; padding:15px;
+      background:var(--dourado-400); color:#2A2A2A;
+      font-family:var(--font-sans); font-size:15px; font-weight:700; letter-spacing:.04em;
+      border:none; border-radius:10px; cursor:pointer;
+      transition:background .2s ease, transform .18s ease, box-shadow .2s ease;
+      margin-top:8px;
+    }
+    .form-submit:hover { background:var(--dourado-500); transform:translateY(-2px); box-shadow:var(--shadow-gold); }
+    .form-submit:active { transform:scale(.98); box-shadow:none; }
+    .form-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .form-legal { font-size:12px; color:var(--text-muted); line-height:1.6; margin-top:16px; text-align:center; }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display:none; text-align:center;
+      animation:fadeUp .5s cubic-bezier(.16,1,.3,1) both;
+    }
+    .form-success.is-shown { display:block; }
+    .success-icon { width:56px; height:56px; background:var(--success-bg); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
+    .success-icon svg { color:var(--success); }
+    .success-title { font-family:var(--font-display); font-size:28px; color:var(--text-strong); margin-bottom:12px; }
+    .success-text { font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:28px; }
+    .success-back { font-size:13px; color:var(--text-gold); text-decoration:none; }
+    .success-back:hover { color:var(--dourado-deep); }
+
+    /* ── ERROR MSG ── */
+    .field-error { font-size:12px; color:var(--danger); margin-top:6px; display:none; }
+    .field-error.is-shown { display:block; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ LEFT PANEL ══ -->
+  <div class="panel-left">
+    <svg class="radar-rings" width="500" height="500" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+      <circle cx="250" cy="250" r="245" stroke="#EEB811" stroke-width=".8"/>
+      <circle cx="250" cy="250" r="180" stroke="#EEB811" stroke-width=".8"/>
+      <circle cx="250" cy="250" r="115" stroke="#EEB811" stroke-width=".8"/>
+      <circle cx="250" cy="250" r="52"  stroke="#EEB811" stroke-width=".8"/>
+    </svg>
+
+    <div class="pl-logo">
+      <a href="index.html">
+        <svg class="pl-radar-svg" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="26" cy="26" r="25" stroke="#3A3A3A" stroke-width=".75"/>
+          <circle cx="26" cy="26" r="17" stroke="#3A3A3A" stroke-width=".75"/>
+          <circle cx="26" cy="26" r="9"  stroke="#3A3A3A" stroke-width=".75"/>
+          <g style="transform-origin:26px 26px; animation:radarSpin 4.5s linear infinite;">
+            <line x1="26" y1="26" x2="26" y2="1" stroke="#A07000" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+            <path d="M26 26 L26 1 A25 25 0 0 1 37.8 5.5 Z" fill="#EEB811" opacity=".22"/>
+          </g>
+          <circle cx="36" cy="12" r="2.5" fill="#EEB811" style="animation:blip1 2.4s ease-in-out infinite;"/>
+          <circle cx="13" cy="34" r="1.8" fill="#A07000" style="animation:blip2 3.4s ease-in-out infinite;"/>
+          <circle cx="26" cy="26" r="2.2" fill="#A07000"/>
+        </svg>
+        <div>
+          <div class="pl-wordmark">RADAR</div>
+          <div class="pl-wordmark-sub">Expert</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="pl-body">
+      <div class="pl-eyebrow">Curadoria semanal</div>
+      <h1 class="pl-title">Sinais que importam,<br>toda segunda.</h1>
+      <p class="pl-desc">Toda semana, os movimentos do cenário econômico que mais afetam micro e pequenas empresas — com análise prática e scripts prontos para usar com seus clientes.</p>
+
+      <ul class="pl-bullets">
+        <li class="pl-bullet">
+          <div class="pl-bullet-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4.2 7.5L8 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          5 sinais do cenário econômico por edição
+        </li>
+        <li class="pl-bullet">
+          <div class="pl-bullet-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4.2 7.5L8 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Scripts prontos para explicar ao cliente
+        </li>
+        <li class="pl-bullet">
+          <div class="pl-bullet-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4.2 7.5L8 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Sugestões de conteúdo para redes sociais
+        </li>
+        <li class="pl-bullet">
+          <div class="pl-bullet-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4.2 7.5L8 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          100% gratuita para consultoras MEF
+        </li>
+      </ul>
+    </div>
+
+    <div class="pl-footer">© 2026 Radar Expert · Mentoria Expert Financeira</div>
+  </div>
+
+  <!-- ══ RIGHT PANEL (FORM) ══ -->
+  <div class="panel-right">
+    <div class="form-wrap">
+
+      <!-- Success state -->
+      <div class="form-success" id="form-success">
+        <div class="success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12L9.5 16.5L19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="success-title">Bem-vinda ao Radar!</div>
+        <p class="success-text">Você receberá a próxima edição na segunda-feira. Até lá, confira as edições anteriores no arquivo.</p>
+        <a href="index.html" class="success-back">← Ver edições anteriores</a>
+      </div>
+
+      <!-- Form -->
+      <div id="form-container">
+        <h2 class="form-title">Assine gratuitamente</h2>
+        <p class="form-sub">Preencha os dados abaixo e receba o Radar Expert toda segunda no seu e-mail.</p>
+
+        <form
+          name="assinantes"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="signup-form"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="assinantes">
+          <p style="display:none"><input name="bot-field"></p>
+
+          <div class="field">
+            <label class="field-label" for="nome">Nome completo</label>
+            <input class="field-input" type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
+            <div class="field-error" id="erro-nome">Por favor, informe seu nome.</div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="email">E-mail</label>
+            <input class="field-input" type="email" id="email" name="email" placeholder="seu@email.com.br" autocomplete="email" required>
+            <div class="field-error" id="erro-email">Por favor, informe um e-mail válido.</div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="whatsapp">WhatsApp</label>
+            <div class="field-whats-wrap">
+              <span class="field-whats-prefix">
+                <span>🇧🇷</span>
+                <span>+55</span>
+              </span>
+              <input class="field-input" type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" autocomplete="tel" required>
+            </div>
+            <div class="field-error" id="erro-whatsapp">Por favor, informe seu WhatsApp.</div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="profissao">Você é</label>
+            <select class="field-select" id="profissao" name="profissao" required>
+              <option value="" disabled selected>Selecione sua atuação</option>
+              <option value="Consultora MEF">Consultora MEF</option>
+              <option value="Contadora">Contadora</option>
+              <option value="Assessora financeira">Assessora financeira</option>
+              <option value="Gestora financeira">Gestora financeira</option>
+              <option value="Empreendedora">Empreendedora</option>
+              <option value="Outra">Outra</option>
+            </select>
+            <div class="field-error" id="erro-profissao">Por favor, selecione sua atuação.</div>
+          </div>
+
+          <button type="submit" class="form-submit" id="submit-btn">
+            Quero receber o Radar Expert
+          </button>
+
+          <p class="form-legal">Sem spam. Cancele quando quiser. Seus dados ficam seguros com a gente.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const form      = document.getElementById('signup-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const success   = document.getElementById('form-success');
+  const container = document.getElementById('form-container');
+
+  // WhatsApp mask
+  const whatsInput = document.getElementById('whatsapp');
+  whatsInput.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 2)  v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    if (v.length > 10) v = v.slice(0,10) + '-' + v.slice(10);
+    this.value = v;
+  });
+
+  function showError(id, inputId) {
+    document.getElementById(id).classList.add('is-shown');
+    document.getElementById(inputId).classList.add('has-error');
+  }
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('is-shown'));
+    document.querySelectorAll('.field-input, .field-select').forEach(el => el.classList.remove('has-error'));
+  }
+
+  function validate() {
+    clearErrors();
+    let ok = true;
+    const nome  = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const whats = document.getElementById('whatsapp').value.trim();
+    const prof  = document.getElementById('profissao').value;
+
+    if (!nome)  { showError('erro-nome', 'nome'); ok = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('erro-email', 'email'); ok = false; }
+    if (!whats || whats.replace(/\D/g,'').length < 10) { showError('erro-whatsapp', 'whatsapp'); ok = false; }
+    if (!prof)  { showError('erro-profissao', 'profissao'); ok = false; }
+    return ok;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!validate()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    const data = new FormData(form);
+
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
+      container.style.display = 'none';
+      success.classList.add('is-shown');
+    })
+    .catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Quero receber o Radar Expert';
+      alert('Erro ao enviar. Tente novamente.');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
