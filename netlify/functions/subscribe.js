@@ -19,6 +19,9 @@ exports.handler = async (event) => {
   const apiKey = process.env.BREVO_API_KEY;
   const listId = 5;
 
+  // Converte "(11) 99999-9999" → "+5511999999999"
+  const whatsappFormatado = '+55' + whatsapp.replace(/\D/g, '');
+
   try {
     const res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -31,7 +34,7 @@ exports.handler = async (event) => {
         email,
         attributes: {
           NOME: nome,
-          WHATSAPP: whatsapp,
+          WHATSAPP: whatsappFormatado,
           PROFISSAO: profissao,
         },
         listIds: [listId],
