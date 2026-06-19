@@ -261,16 +261,7 @@
         <h2 class="form-title">Assine gratuitamente</h2>
         <p class="form-sub">Preencha os dados abaixo e receba o Radar Expert toda segunda no seu e-mail.</p>
 
-        <form
-          name="assinantes"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          id="signup-form"
-          novalidate
-        >
-          <input type="hidden" name="form-name" value="assinantes">
-          <p style="display:none"><input name="bot-field"></p>
+        <form id="signup-form" novalidate>
 
           <div class="field">
             <label class="field-label" for="nome">Nome completo</label>
@@ -370,14 +361,26 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
 
-    const data = new FormData(form);
+    const payload = {
+      nome:      document.getElementById('nome').value.trim(),
+      email:     document.getElementById('email').value.trim(),
+      whatsapp:  document.getElementById('whatsapp').value.trim(),
+      profissao: document.getElementById('profissao').value,
+    };
 
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
+    fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     })
-    .then(() => {
-      container.style.display = 'none';
-      success.classList.add('is-shown');
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        container.style.display = 'none';
+        success.classList.add('is-shown');
+      } else {
+        throw new Error(data.error || 'Erro desconhecido');
+      }
     })
     .catch(() => {
       submitBtn.disabled = false;
