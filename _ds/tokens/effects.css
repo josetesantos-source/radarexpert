@@ -1,0 +1,32 @@
+/* RADAR EXPERT — Effects: shadows, borders, gradients, motion
+   Shadows are soft and warm-tinted (cast on cream paper), never harsh black.
+   Gold gradients echo the radar-sweep motif. */
+
+:root {
+  /* ---- Elevation (warm, low-contrast on cream) ---------------------- */
+  --shadow-xs:  0 1px 2px rgba(42, 42, 42, 0.05);
+  --shadow-sm:  0 1px 3px rgba(42, 42, 42, 0.07), 0 1px 2px rgba(42, 42, 42, 0.05);
+  --shadow-md:  0 4px 14px rgba(42, 42, 42, 0.08), 0 2px 4px rgba(42, 42, 42, 0.05);
+  --shadow-lg:  0 14px 40px rgba(42, 42, 42, 0.12), 0 4px 10px rgba(42, 42, 42, 0.06);
+  --shadow-xl:  0 28px 70px rgba(42, 42, 42, 0.16);
+  --shadow-gold: 0 6px 22px rgba(160, 112, 0, 0.20);
+
+  /* ---- Borders ------------------------------------------------------ */
+  --border-width: 1px;
+  --border-hairline: 1px solid var(--border-subtle);
+  --border-card: 1px solid var(--border-strong);
+
+  /* ---- Radar-sweep gradients (signature motif) ---------------------- */
+  --sweep-on-cream: linear-gradient(135deg, rgba(160,112,0,0) 0%, rgba(238,184,17,0.30) 60%, rgba(246,226,122,0.95) 100%); /* @kind other */
+  --sweep-on-dark:  linear-gradient(135deg, rgba(238,184,17,0) 0%, rgba(238,184,17,0.32) 55%, rgba(246,226,122,1) 100%); /* @kind other */
+  --gold-gradient:  linear-gradient(135deg, #EEB811 0%, #A07000 100%); /* @kind other */
+
+  /* ---- Motion ------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */  /* settle — UI entrances */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --dur-fast:    120ms; /* @kind other */
+  --dur-base:    220ms; /* @kind other */
+  --dur-slow:    420ms; /* @kind other */
+  --sweep-spin:  4s; /* @kind other */   /* radar sweep rotation period */
+}

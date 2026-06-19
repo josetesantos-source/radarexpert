@@ -1,0 +1,18 @@
+[
+  {
+    "id": "01",
+    "numero": "#01",
+    "titulo": "O que merece a sua atenção esta semana",
+    "semana": "11 a 18 de Junho",
+    "ano": "2026",
+    "data_iso": "2026-06-18",
+    "arquivo": "editions/01.html",
+    "sinais": [
+      "Selic cai para 14,25%",
+      "Inadimplência atinge 8,5 milhões de PMEs",
+      "Desenrola renegociou R$ 15,6 bilhões",
+      "Simples Nacional avança no Congresso",
+      "Curso gratuito de IA para pequenos negócios"
+    ]
+  }
+]

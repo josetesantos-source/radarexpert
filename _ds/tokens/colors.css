@@ -1,0 +1,67 @@
+/* RADAR EXPERT — Color tokens
+   Palette: warm cream paper, charcoal ink ("chumbo"), gold accent ("dourado").
+   An editorial, print-leaning palette — restrained, warm, with gold reserved for emphasis. */
+
+:root {
+  /* ---- Base ramps ---------------------------------------------------- */
+
+  /* Creme — warm paper neutrals (light surfaces) */
+  --creme-50:  #FBF9F3;   /* lightest — raised cards on cream */
+  --creme-100: #F6F2E9;
+  --creme-200: #F2EFE7;   /* brand cream — default page background */
+  --creme-300: #E9E3D4;   /* hairline borders, dividers on cream */
+  --creme-400: #D8D0BC;   /* stronger borders, muted fills */
+
+  /* Chumbo — charcoal ink (dark surfaces & text) */
+  --chumbo-900: #1C1C1C;  /* deepest — overlay scrims */
+  --chumbo-800: #232323;
+  --chumbo-700: #2A2A2A;  /* brand charcoal — dark surfaces, primary ink */
+  --chumbo-600: #3A3A3A;  /* raised dark surface, borders on dark */
+  --chumbo-500: #555452;  /* secondary ink on cream */
+  --chumbo-400: #7A7872;  /* muted / caption ink on cream */
+  --chumbo-300: #A8A59C;  /* faint ink, placeholders */
+
+  /* Dourado — gold accent ramp */
+  --dourado-deep:  #7E5800;  /* gold pressed / deep text-gold on cream */
+  --dourado-700:   #A07000;  /* brand gold on cream — links, EXPERT lockup, accents */
+  --dourado-500:   #C99412;  /* mid gold */
+  --dourado-400:   #EEB811;  /* bright gold — gold on dark surfaces */
+  --dourado-200:   #F6E27A;  /* light gold — radar sweep, soft highlights */
+  --dourado-100:   #FBF1C9;  /* gold tint fill on cream (badges) */
+
+  /* ---- Semantic: surfaces ------------------------------------------- */
+  --surface-page:        var(--creme-200);   /* default app/page background */
+  --surface-raised:      var(--creme-50);    /* cards, panels on cream */
+  --surface-sunken:      var(--creme-100);   /* wells, code, insets */
+  --surface-inverse:     var(--chumbo-700);  /* dark sections, footer, dark cards */
+  --surface-inverse-raised: var(--chumbo-600);
+  --surface-overlay:     rgba(28, 28, 28, 0.55); /* modal scrim */
+
+  /* ---- Semantic: text ----------------------------------------------- */
+  --text-strong:    var(--chumbo-700);   /* headings, primary copy */
+  --text-body:      #34332F;             /* running body copy on cream */
+  --text-muted:     var(--chumbo-400);   /* captions, metadata */
+  --text-faint:     var(--chumbo-300);   /* placeholders, disabled */
+  --text-gold:      var(--dourado-700);  /* accent text, links, eyebrows */
+  --text-on-dark:        #F2EFE7;        /* primary copy on charcoal */
+  --text-on-dark-muted:  #B7B4AC;        /* secondary copy on charcoal */
+  --text-on-gold:        #2A2A2A;        /* copy on a gold fill */
+
+  /* ---- Semantic: lines & accents ------------------------------------ */
+  --border-subtle:  var(--creme-300);    /* hairlines, dividers on cream */
+  --border-strong:  var(--creme-400);    /* input borders, card outlines */
+  --border-on-dark: rgba(238, 184, 17, 0.28);
+  --accent:         var(--dourado-700);  /* primary accent on cream */
+  --accent-on-dark: var(--dourado-400);  /* primary accent on charcoal */
+  --focus-ring:     rgba(160, 112, 0, 0.45);
+
+  /* ---- Status (warm-leaning, used sparingly) ------------------------ */
+  --success:   #4F7A3F;
+  --success-bg:#E7EEDF;
+  --warning:   #B6791C;
+  --warning-bg:#F8ECCF;
+  --danger:    #A6432F;
+  --danger-bg: #F3E0D9;
+  --info:      var(--dourado-700);
+  --info-bg:   var(--dourado-100);
+}
