@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Radar Expert — Edição #01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin:0; padding:0; background:#F2EFE7; font-family:'DM Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif; color:#34332F; -webkit-font-smoothing:antialiased; }
+  p, h1, h2, h3 { margin:0; }
+  h1, h2, h3 { font-weight:400; }
+  a { color:#A07000; text-underline-offset:3px; }
+
+  .wrapper { max-width:600px; margin:0 auto; padding:24px 16px 60px; }
+
+  /* HEADER */
+  .header { padding:48px 0 36px; border-bottom:1px solid #E9E3D4; }
+  .logo-row { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
+  .wordmark-main { font-family:'Gilda Display', Georgia, serif; font-size:30px; letter-spacing:.14em; color:#2A2A2A; line-height:1; }
+  .wordmark-sub { font-size:9px; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:#A07000; margin-top:3px; }
+  .meta { font-size:11px; font-weight:600; letter-spacing:.20em; text-transform:uppercase; color:#7A7872; margin-bottom:16px; }
+  .meta-dot { color:#EEB811; margin:0 8px; }
+  .hero-title { font-family:'Gilda Display', Georgia, serif; font-size:36px; color:#2A2A2A; line-height:1.13; letter-spacing:-.01em; }
+
+  /* SELECAO */
+  .selecao { padding:24px 0 18px; display:flex; align-items:center; gap:16px; }
+  .selecao-text { font-size:10px; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:#A07000; white-space:nowrap; }
+  .selecao-rule { flex:1; height:1px; background:#E9E3D4; }
+
+  /* INTRO */
+  .intro { font-size:16px; line-height:1.74; color:#34332F; padding-bottom:6px; }
+
+  /* SECTION DIVIDER */
+  .section-div { display:flex; align-items:center; gap:14px; margin:48px 0 26px; }
+  .section-div-label { font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#A07000; white-space:nowrap; }
+  .section-div-rule { flex:1; height:1px; background:#E9E3D4; }
+
+  /* SIGNAL CARD */
+  .signal { background:#FBF9F3; border:1px solid #D8D0BC; border-radius:12px; overflow:hidden; margin-bottom:22px; }
+  .signal-hd { padding:24px 26px 20px; border-bottom:1px solid #E9E3D4; }
+  .signal-num { font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#A07000; margin-bottom:8px; }
+  .signal-title { font-family:'Gilda Display', Georgia, serif; font-size:22px; color:#2A2A2A; line-height:1.22; }
+
+  /* STAT ROW */
+  .stat-row { display:flex; border-bottom:1px solid #E9E3D4; }
+  .stat { flex:1; padding:16px 18px; border-right:1px solid #E9E3D4; }
+  .stat:last-child { border-right:none; }
+  .stat-num { font-family:'Gilda Display', Georgia, serif; font-size:26px; color:#A07000; line-height:1; margin-bottom:5px; display:block; }
+  .stat-label { font-size:10px; font-weight:600; letter-spacing:.10em; text-transform:uppercase; color:#7A7872; line-height:1.35; display:block; }
+
+  /* DARK STAT ROW */
+  .stat-row-dark { background:#2A2A2A; border-bottom:1px solid #E9E3D4; display:flex; }
+  .stat-row-dark .stat { border-right-color:rgba(255,255,255,.07); }
+  .stat-row-dark .stat-num { color:#EEB811; }
+  .stat-row-dark .stat-label { color:#B7B4AC; }
+
+  /* COMPARE ROW */
+  .compare-row { display:flex; border-bottom:1px solid #E9E3D4; background:#F6F2E9; }
+  .compare-item { flex:1; padding:16px 18px; border-right:1px solid #E9E3D4; }
+  .compare-item:last-child { border-right:none; }
+  .compare-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7A7872; margin-bottom:8px; }
+  .compare-old { font-size:13px; color:#7A7872; text-decoration:line-through; margin-bottom:4px; }
+  .compare-arrow { font-size:11px; color:#C99412; display:block; margin-bottom:2px; }
+  .compare-new { font-family:'Gilda Display', Georgia, serif; font-size:19px; color:#A07000; line-height:1; }
+
+  /* PARTNERS */
+  .partners-row { display:flex; align-items:center; gap:8px; padding:14px 18px; border-bottom:1px solid #E9E3D4; flex-wrap:wrap; }
+  .partner-pill { font-size:12px; font-weight:600; color:#2A2A2A; background:#F2EFE7; border:1px solid #D8D0BC; border-radius:100px; padding:4px 12px; }
+  .free-badge { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#4F7A3F; background:#E7EEDF; border-radius:100px; padding:4px 12px; margin-left:auto; }
+
+  /* SIGNAL BODY */
+  .signal-bd { padding:0 26px 26px; }
+  .sec { padding-top:20px; }
+  .sec + .sec { margin-top:16px; padding-top:18px; border-top:1px solid #E9E3D4; }
+  .sec-label { font-size:10px; font-weight:700; letter-spacing:.20em; text-transform:uppercase; color:#A07000; margin-bottom:8px; }
+  .sec-text { font-size:14px; line-height:1.74; color:#34332F; }
+
+  /* IMPORTA BOX */
+  .importa-box { background:#F6F2E9; border-left:3px solid #C99412; border-radius:0 8px 8px 0; padding:12px 16px; font-size:14px; line-height:1.72; color:#34332F; }
+
+  /* QUOTE */
+  .quote { background:#2A2A2A; border-radius:10px; padding:20px 22px; }
+  .quote-hint { font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#EEB811; margin-bottom:9px; }
+  .quote-text { font-size:14px; font-style:italic; line-height:1.72; color:#F2EFE7; }
+
+  /* SUGESTAO */
+  .sugestao { background:#FBF1C9; border:1px solid rgba(160,112,0,.18); border-radius:10px; padding:16px 18px; }
+  .sugestao-format { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#7E5800; background:rgba(160,112,0,.13); border-radius:100px; padding:4px 12px; margin-bottom:10px; }
+  .sugestao-gancho-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#A07000; margin-bottom:6px; }
+  .sugestao-gancho { font-size:13px; line-height:1.66; color:#2A2A2A; font-style:italic; }
+
+  /* SOURCE */
+  .source-link { font-size:12px; color:#7A7872; }
+  .source-link a { font-size:12px; color:#7A7872; }
+
+  /* CTA */
+  .cta { background:#2A2A2A; border-radius:14px; padding:44px 32px; text-align:center; margin-top:48px; }
+  .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:#EEB811; margin-bottom:12px; }
+  .cta-title { font-family:'Gilda Display', Georgia, serif; font-size:30px; color:#F2EFE7; line-height:1.16; margin-bottom:28px; }
+  .cta-btn { display:inline-block; background:#EEB811; color:#2A2A2A; font-family:'DM Sans', Arial, sans-serif; font-size:14px; font-weight:700; letter-spacing:.06em; text-decoration:none; padding:13px 34px; border-radius:8px; }
+
+  /* FOOTER */
+  .footer { margin-top:56px; padding-top:32px; border-top:1px solid #E9E3D4; text-align:center; }
+  .footer-wordmark { font-family:'Gilda Display', Georgia, serif; font-size:20px; letter-spacing:.14em; color:#2A2A2A; }
+  .footer-sub { font-size:9px; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:#A07000; margin-top:3px; }
+  .footer-text { font-size:12px; color:#7A7872; margin-top:14px; line-height:1.72; }
+  .footer-rule { width:32px; height:1px; background:#C99412; margin:20px auto 0; opacity:.44; }
+
+  @media(max-width:480px) {
+    .stat-row, .stat-row-dark { flex-direction:column; }
+    .stat { border-right:none; border-bottom:1px solid #E9E3D4; }
+    .stat:last-child { border-bottom:none; }
+    .compare-row { flex-direction:column; }
+    .compare-item { border-right:none; border-bottom:1px solid #E9E3D4; }
+    .compare-item:last-child { border-bottom:none; }
+    .hero-title { font-size:26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- LEIA ONLINE BANNER -->
+  <div style="text-align:center; padding:16px 0 28px;">
+    <a href="https://radarexpert.netlify.app" style="display:inline-flex; align-items:center; gap:8px; background:#FBF9F3; border:1px solid #D8D0BC; border-radius:100px; padding:9px 20px; font-family:'DM Sans',Arial,sans-serif; font-size:12px; font-weight:600; letter-spacing:.06em; color:#7A7872; text-decoration:none;">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.75" stroke="#A07000" stroke-width="1.1"/><path d="M4.5 6.5h4M7 4.5l2 2-2 2" stroke="#A07000" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Leia esta edição com animação no site
+    </a>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-row">
+      <svg width="46" height="46" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="25" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="17" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="9"  stroke="#D8D0BC" stroke-width=".75"/>
+        <path d="M26 26 L26 1 A25 25 0 0 1 37.8 5.5 Z" fill="#EEB811" opacity=".30"/>
+        <line x1="26" y1="26" x2="26" y2="1" stroke="#A07000" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+        <line x1="26" y1="26" x2="1" y2="26" stroke="#E9E3D4" stroke-width=".6" stroke-dasharray="2 3"/>
+        <line x1="26" y1="26" x2="26" y2="51" stroke="#E9E3D4" stroke-width=".6" stroke-dasharray="2 3"/>
+        <line x1="26" y1="26" x2="51" y2="26" stroke="#E9E3D4" stroke-width=".6" stroke-dasharray="2 3"/>
+        <circle cx="36" cy="12" r="2.8" fill="#EEB811"/>
+        <circle cx="13" cy="34" r="2" fill="#A07000" opacity=".7"/>
+        <circle cx="26" cy="26" r="2.5" fill="#A07000"/>
+      </svg>
+      <div>
+        <div class="wordmark-main">RADAR</div>
+        <div class="wordmark-sub">Expert</div>
+      </div>
+    </div>
+    <div class="meta">
+      EDIÇÃO <strong style="color:#A07000; font-weight:700;">#01</strong>
+      <span class="meta-dot">·</span>
+      SEMANA DE 11 A 18 DE JUNHO
+      <span class="meta-dot">·</span>
+      2026
+    </div>
+    <h1 class="hero-title">O que merece a sua atenção esta semana.</h1>
+  </div>
+
+  <div class="selecao">
+    <span class="selecao-text">Selecionamos o que merece a sua atenção nesta semana</span>
+    <div class="selecao-rule"></div>
+  </div>
+
+  <p class="intro">
+    Nesta edição, cobrimos <strong style="color:#2A2A2A; font-weight:600;">cinco sinais</strong> que movimentaram o cenário das micro e pequenas empresas — da política monetária à inteligência artificial. Cada sinal vem com análise prática, um script para usar com o cliente e uma sugestão de conteúdo para as redes.
+  </p>
+
+  <div class="section-div">
+    <span class="section-div-label">No Radar</span>
+    <div class="section-div-rule"></div>
+  </div>
+
+  <!-- SINAL 01 -->
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 01</div>
+      <h2 class="signal-title">Selic cai para 14,25%, mas crédito ainda exige cautela dos pequenos negócios</h2>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">14,25%</span><span class="stat-label">Taxa Selic atual</span></div>
+      <div class="stat"><span class="stat-num">3º</span><span class="stat-label">Corte consecutivo</span></div>
+      <div class="stat"><span class="stat-num" style="font-size:17px; padding-top:4px;">acima de 14%</span><span class="stat-label">Previsão para o fim do ano</span></div>
+    </div>
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Banco Central reduziu a taxa Selic de 14,50% para 14,25% ao ano. É o terceiro corte seguido, mas o patamar continua elevado e os juros bancários não devem cair na mesma velocidade. O mercado prevê que a Selic termine o ano acima de 14%, o que mantém o crédito caro e o consumo restrito.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">O empresário pode ouvir no noticiário que "os juros caíram" e achar que é hora de pegar empréstimos. Seu papel é alertar que, na ponta (no banco), o crédito para a pequena empresa continua caro, exigindo <strong style="color:#2A2A2A; font-weight:600;">gestão rigorosa de caixa</strong> em vez de endividamento.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"A taxa de juros do país caiu um pouquinho, mas ainda está bem alta. Isso significa que o dinheiro no banco continua caro para a sua empresa. Antes de pensar em pegar um empréstimo para expandir, vamos olhar para o seu caixa e ver onde podemos enxugar custos para você não pagar juros desnecessários."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Carrossel no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"A Selic caiu para 14,25%. É hora de pegar aquele empréstimo para a sua empresa? A resposta curta é: cuidado. Arraste para o lado e entenda por que o dinheiro ainda está caro para o pequeno negócio."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Seu Dinheiro — <a href="https://www.seudinheiro.com/2026/seu-negocio/selic-a-1425-ainda-e-uma-situacao-dramatica-para-as-pequenas-e-medias-empresas-o-que-empreendedores-podem-fazer-giov/">seudinheiro.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINAL 02 -->
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 02</div>
+      <h2 class="signal-title">Inadimplência atinge 8,5 milhões de pequenos negócios no Brasil</h2>
+    </div>
+    <div class="stat-row-dark">
+      <div class="stat"><span class="stat-num">8,5M</span><span class="stat-label">PMEs inadimplentes</span></div>
+      <div class="stat"><span class="stat-num">R$ 24,6K</span><span class="stat-label">Dívida média por CNPJ</span></div>
+      <div class="stat"><span class="stat-num">55,6%</span><span class="stat-label">Setor de serviços</span></div>
+    </div>
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">Um levantamento da Serasa Experian revelou que o Brasil tem 9 milhões de empresas inadimplentes, sendo 8,5 milhões delas micro e pequenas empresas. O setor de serviços é o mais afetado (55,6%), seguido pelo comércio (32,4%). O valor médio das dívidas por CNPJ é de R$ 24,6 mil.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Esse dado mostra o tamanho do seu mercado em potencial: empresas asfixiadas por dívidas. Isso reforça a urgência de oferecer serviços de <strong style="color:#2A2A2A; font-weight:600;">reestruturação de dívidas, negociação com bancos e organização de fluxo de caixa</strong>.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Você sabia que mais de 8 milhões de pequenas empresas estão no vermelho hoje? Muitas chegaram a esse ponto porque misturaram as contas ou não tinham uma reserva de emergência. Vamos focar em proteger o seu caixa agora para garantir que sua empresa passe longe dessa estatística."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Reels</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Quase 9 milhões de empresas estão endividadas no Brasil, e a maioria é de pequeno porte. Se você não quer que o seu negócio seja o próximo, pare de cometer este erro financeiro hoje mesmo…"</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Convergência Digital — <a href="https://convergenciadigital.com.br/mercado/inadimplencia-recorde-atinge-mais-de-9-milhoes-de-empresas/">convergenciadigital.com.br</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINAL 03 -->
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 03</div>
+      <h2 class="signal-title">Desenrola para pequenos negócios já renegociou R$ 15,6 bilhões</h2>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">R$ 15,6Bi</span><span class="stat-label">Em dívidas renegociadas</span></div>
+      <div class="stat"><span class="stat-num">121K</span><span class="stat-label">Operações realizadas</span></div>
+      <div class="stat"><span class="stat-num" style="font-size:17px; padding-top:4px;">até R$ 4,8M</span><span class="stat-label">Faturamento elegível</span></div>
+    </div>
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O programa Novo Desenrola Brasil, focado em pequenas empresas, já renegociou R$ 15,6 bilhões em dívidas por meio de 121 mil operações. A maioria das negociações envolve dívidas do Pronampe. O programa atende empresas com faturamento anual de até R$ 4,8 milhões e oferece prazos maiores e condições diferenciadas.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">É uma solução prática e imediata que você pode aplicar aos clientes endividados. Conhecer as regras do Desenrola permite que você atue como a <strong style="color:#2A2A2A; font-weight:600;">facilitadora que vai tirar a empresa do sufoco financeiro</strong>.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"O governo abriu um programa chamado Desenrola para renegociar dívidas de empresas do seu porte, principalmente aquelas do Pronampe. Eles estão dando prazos maiores e juros menores. Vamos levantar todas as suas pendências com o banco e ver se vale a pena entrar no programa para aliviar as parcelas mensais?"</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Mensagem de WhatsApp</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Oi [Nome], tudo bem? Saiu uma novidade importante: o Desenrola para pequenas empresas está a todo vapor e já ajudou muita gente a renegociar dívidas do Pronampe com condições melhores. Se você tem algum empréstimo pesando no caixa, me avise e a gente analisa se sua empresa se encaixa."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">O Metropolitano — <a href="https://ometropolitano.com.br/desenrola-renegocia-r-156-bilhoes-para-pequenos-negocios/">ometropolitano.com.br</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINAL 04 -->
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 04</div>
+      <h2 class="signal-title">Projeto que amplia limites do Simples Nacional avança, mas gera incertezas</h2>
+    </div>
+    <div class="compare-row">
+      <div class="compare-item">
+        <div class="compare-label">MEI — Faturamento anual</div>
+        <div class="compare-old">R$ 81.000 / ano</div>
+        <div class="compare-arrow">↓ proposta</div>
+        <div class="compare-new">R$ 145.000 / ano</div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-label">Simples (EPP) — Faturamento anual</div>
+        <div class="compare-old">R$ 4,8 milhões / ano</div>
+        <div class="compare-arrow">↓ proposta</div>
+        <div class="compare-new">R$ 8,7 milhões / ano</div>
+      </div>
+    </div>
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">Um projeto de lei propõe aumentar o limite de faturamento do Simples Nacional — de R$ 4,8 milhões para R$ 8,7 milhões para EPPs, e de R$ 81 mil para R$ 145 mil para MEIs — com votação prevista para julho. No entanto, estados e municípios são contra, alegando perda de arrecadação.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">A possível ampliação gera expectativa entre clientes que estão perto de "estourar o limite". Como o projeto enfrenta forte resistência, <strong style="color:#2A2A2A; font-weight:600;">oriente-os a planejar com as regras atuais</strong> — se a lei mudar, será um bônus, não uma âncora.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Tem um projeto no Congresso para aumentar o limite do Simples e do MEI, o que seria ótimo. Mas prefeituras e estados são contra, então não é garantido que passe. O ideal é a gente fazer o seu planejamento financeiro com as regras atuais. Se a lei mudar, será um bônus, mas não podemos depender dela."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Post no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"O limite do MEI e do Simples Nacional vai aumentar em 2026? Existe um projeto no Congresso, mas ele ainda não foi aprovado e enfrenta resistência. Planejar com as regras de hoje evita que você seja desenquadrado."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Folha de S.Paulo — <a href="https://www1.folha.uol.com.br/blogs/que-imposto-e-esse/2026/06/projeto-que-amplia-limites-do-simples-ameaca-pequenas-empresas-dizem-estados-e-municipios.shtml">folha.uol.com.br</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINAL 05 -->
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 05</div>
+      <h2 class="signal-title">Curso gratuito de IA para organizar a gestão e vender mais</h2>
+    </div>
+    <div class="partners-row">
+      <span class="partner-pill">Google</span>
+      <span class="partner-pill">Sebrae</span>
+      <span class="partner-pill">Itaú</span>
+      <span class="free-badge">Gratuito</span>
+    </div>
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">Google, Sebrae e Itaú lançaram o programa gratuito "Negócio em dIA", focado em capacitar pequenos empreendedores no uso de Inteligência Artificial. O curso ensina como usar a IA na prática para automatizar atendimento, melhorar a presença digital, organizar as finanças e economizar tempo na operação diária.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">A IA é a melhor ferramenta para o empresário ganhar tempo e organizar a "casa". <strong style="color:#2A2A2A; font-weight:600;">Você mesma pode fazer o curso</strong> para aplicar no seu trabalho de consultoria e recomendar ferramentas gratuitas que facilitem a vida do seu cliente.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Sei que a rotina está corrida e você acaba fazendo de tudo um pouco na empresa. O Sebrae e o Google lançaram um curso rápido e gratuito para ensinar como usar a Inteligência Artificial para te ajudar no atendimento ao cliente e na organização do dia a dia. Vale a pena fazer para ganhar tempo."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Stories com link · Reels</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Sente que faltam horas no seu dia para dar conta da empresa? A Inteligência Artificial pode fazer o trabalho chato por você. O Sebrae e o Google acabaram de lançar um curso gratuito sobre IA para pequenos negócios. Comenta 'CURSO' que eu te mando o link!"</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Você S/A — <a href="https://vocesa.abril.com.br/empreendedorismo/google-sebrae-e-itau-lancam-curso-gratuito-sobre-ia-para-pequenos-negocios/">vocesa.abril.com.br</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-eyebrow">Compartilhe com outras consultoras</div>
+    <div class="cta-title">Sinais que importam,<br>toda semana.</div>
+    <a href="https://radarexpert.netlify.app/assinar.html" class="cta-btn">Assinar gratuitamente</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-wordmark">RADAR</div>
+    <div class="footer-sub">Expert</div>
+    <p class="footer-text">
+      EDIÇÃO #01 · JUNHO · 2026<br>
+      Curadoria estratégica para consultoras financeiras que atendem micro e pequenas empresas.<br><br>
+      Você está recebendo este e-mail porque se inscreveu no Radar Expert.<br>
+      <a href="{{ unsubscribe }}" style="color:#7A7872;">Cancelar inscrição</a>
+    </p>
+    <div class="footer-rule"></div>
+  </div>
+
+</div>
+</body>
+</html>
