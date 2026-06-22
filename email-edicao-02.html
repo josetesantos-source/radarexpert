@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar Expert — Edição #02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;padding:0;background:#F2EFE7;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:#34332F;-webkit-font-smoothing:antialiased;}
+  p,h1,h2,h3{margin:0;}h1,h2,h3{font-weight:400;}a{color:#A07000;}
+  .wrapper{max-width:600px;margin:0 auto;padding:24px 16px 60px;}
+  .header{padding:48px 0 36px;border-bottom:1px solid #E9E3D4;}
+  .logo-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+  .wordmark-main{font-family:'Gilda Display',Georgia,serif;font-size:30px;letter-spacing:.14em;color:#2A2A2A;line-height:1;}
+  .wordmark-sub{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#A07000;margin-top:3px;}
+  .meta{font-size:11px;font-weight:600;letter-spacing:.20em;text-transform:uppercase;color:#7A7872;margin-bottom:16px;}
+  .meta-dot{color:#EEB811;margin:0 8px;}
+  .hero-title{font-family:'Gilda Display',Georgia,serif;font-size:36px;color:#2A2A2A;line-height:1.13;letter-spacing:-.01em;}
+  .selecao{padding:24px 0 18px;display:flex;align-items:center;gap:16px;}
+  .selecao-text{font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#A07000;white-space:nowrap;}
+  .selecao-rule{flex:1;height:1px;background:#E9E3D4;}
+  .intro{font-size:16px;line-height:1.74;color:#34332F;padding-bottom:6px;}
+  .section-div{display:flex;align-items:center;gap:14px;margin:48px 0 26px;}
+  .section-div-label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A07000;white-space:nowrap;}
+  .section-div-rule{flex:1;height:1px;background:#E9E3D4;}
+  .signal{background:#FBF9F3;border:1px solid #D8D0BC;border-radius:12px;overflow:hidden;margin-bottom:22px;}
+  .signal-hd{padding:24px 26px 20px;border-bottom:1px solid #E9E3D4;}
+  .signal-num{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A07000;margin-bottom:8px;}
+  .signal-title{font-family:'Gilda Display',Georgia,serif;font-size:22px;color:#2A2A2A;line-height:1.22;}
+  .signal-bd{padding:0 26px 26px;}
+  .sec{padding-top:20px;}.sec+.sec{margin-top:16px;padding-top:18px;border-top:1px solid #E9E3D4;}
+  .sec-label{font-size:10px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:#A07000;margin-bottom:8px;}
+  .sec-text{font-size:14px;line-height:1.74;color:#34332F;}
+  .importa-box{background:#F6F2E9;border-left:3px solid #C99412;border-radius:0 8px 8px 0;padding:12px 16px;font-size:14px;line-height:1.72;color:#34332F;}
+  .quote{background:#2A2A2A;border-radius:10px;padding:20px 22px;}
+  .quote-hint{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#EEB811;margin-bottom:9px;}
+  .quote-text{font-size:14px;font-style:italic;line-height:1.72;color:#F2EFE7;}
+  .sugestao{background:#FBF1C9;border:1px solid rgba(160,112,0,.18);border-radius:10px;padding:16px 18px;}
+  .sugestao-format{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7E5800;background:rgba(160,112,0,.13);border-radius:100px;padding:4px 12px;margin-bottom:10px;}
+  .sugestao-gancho-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#A07000;margin-bottom:6px;}
+  .sugestao-gancho{font-size:13px;line-height:1.66;color:#2A2A2A;font-style:italic;}
+  .source-link{font-size:12px;color:#7A7872;}
+  .cta{background:#2A2A2A;border-radius:14px;padding:44px 32px;text-align:center;margin-top:48px;}
+  .cta-eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#EEB811;margin-bottom:12px;}
+  .cta-title{font-family:'Gilda Display',Georgia,serif;font-size:30px;color:#F2EFE7;line-height:1.16;margin-bottom:28px;}
+  .cta-btn{display:inline-block;background:#EEB811;color:#2A2A2A;font-family:'DM Sans',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-decoration:none;padding:13px 34px;border-radius:8px;}
+  .footer{margin-top:56px;padding-top:32px;border-top:1px solid #E9E3D4;text-align:center;}
+  .footer-wordmark{font-family:'Gilda Display',Georgia,serif;font-size:20px;letter-spacing:.14em;color:#2A2A2A;}
+  .footer-sub{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#A07000;margin-top:3px;}
+  .footer-text{font-size:12px;color:#7A7872;margin-top:14px;line-height:1.72;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div style="text-align:center;padding:16px 0 28px;">
+    <a href="https://radarexpert.netlify.app" style="display:inline-flex;align-items:center;gap:8px;background:#FBF9F3;border:1px solid #D8D0BC;border-radius:100px;padding:9px 20px;font-family:'DM Sans',Arial,sans-serif;font-size:12px;font-weight:600;color:#7A7872;text-decoration:none;">
+      ↗ Leia esta edição com animação no site
+    </a>
+  </div>
+  <div class="header">
+    <div class="logo-row">
+      <svg width="46" height="46" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="25" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="17" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="9"  stroke="#D8D0BC" stroke-width=".75"/>
+        <path d="M26 26 L26 1 A25 25 0 0 1 37.8 5.5 Z" fill="#EEB811" opacity=".30"/>
+        <line x1="26" y1="26" x2="26" y2="1" stroke="#A07000" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+        <circle cx="36" cy="12" r="2.8" fill="#EEB811"/>
+        <circle cx="13" cy="34" r="2" fill="#A07000" opacity=".7"/>
+        <circle cx="26" cy="26" r="2.5" fill="#A07000"/>
+      </svg>
+      <div>
+        <div class="wordmark-main">RADAR</div>
+        <div class="wordmark-sub">Expert</div>
+      </div>
+    </div>
+    <div class="meta">
+      EDIÇÃO <strong style="color:#A07000;font-weight:700;">#02</strong>
+      <span class="meta-dot">·</span>
+      SEMANA DE 14 A 21 DE JUNHO
+      <span class="meta-dot">·</span>
+      2026
+    </div>
+    <h1 class="hero-title">O que merece a sua atenção esta semana.</h1>
+  </div>
+  <div class="selecao">
+    <span class="selecao-text">Selecionamos o que merece a sua atenção nesta semana</span>
+    <div class="selecao-rule"></div>
+  </div>
+  <p class="intro">Nesta edição, cobrimos <strong style="color:#2A2A2A;font-weight:600;">4 sinais</strong> que movimentaram o cenário das micro e pequenas empresas. Cada sinal vem com análise prática, um script para usar com o cliente e uma sugestão de conteúdo para as redes.</p>
+  <div class="section-div">
+    <span class="section-div-label">No Radar</span>
+    <div class="section-div-rule"></div>
+  </div>
+  
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 01</div>
+      <h2 class="signal-title">Governo propõe elevar teto do MEI para R$ 130 mil, mas apenas a partir de 2027</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Ministério da Fazenda confirmou que vai propor ao Congresso o aumento do limite de faturamento do MEI de forma escalonada. A ideia é subir o teto dos atuais R$ 81 mil para R$ 110 mil em 2027, chegando a R$ 130 mil em 2028. A proposta também deve permitir a contratação de até dois funcionários. O ministro Dario Durigan descartou ampliar os limites do Simples Nacional como um todo, alegando forte impacto nas contas públicas.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Muitos clientes que estão faturando perto de R$ 81 mil aguardavam uma mudança ainda para este ano para não precisarem migrar para o regime de Microempresa (ME). Com a confirmação de que o teto não sobe em 2026 e que o Simples não será alterado, você precisa acelerar o planejamento tributário desses clientes, preparando o caixa e a precificação deles para a transição inevitável de regime tributário nos próximos meses.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"O governo avisou que o limite do MEI só vai aumentar no ano que vem. Como você já está faturando perto do teto atual de 81 mil reais, não podemos mais esperar. Vamos sentar e planejar a sua mudança para Microempresa agora. Precisamos ajustar o preço dos seus produtos para absorver o imposto do Simples Nacional sem que você perca dinheiro no final do mês."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Carrossel no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"O limite do MEI vai aumentar? Sim, mas não agora. O governo confirmou que o teto só sobe a partir de 2027. Se você está faturando perto de R$ 6.750 por mês, arraste para o lado e veja o que você precisa fazer hoje para não pagar multas pesadas à Receita Federal."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Folha de S.Paulo — <a href="https://www1.folha.uol.com.br/mercado/2026/06/governo-deve-propor-subir-teto-do-mei-em-duas-etapas-ate-chegar-a-r-130-mil-em-2028.shtml" style="color:#7A7872;">Folha de S.Paulo</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 02</div>
+      <h2 class="signal-title">Mercado eleva projeção de inflação pela 14ª semana e prevê juros mais altos</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Relatório Focus do Banco Central mostrou que o mercado financeiro aumentou a projeção da inflação (IPCA) para 5,30% em 2026, distanciando-se do teto da meta. Com a pressão nos preços, os economistas também elevaram a estimativa da taxa Selic para o final do ano, passando de 13,50% para 13,75%, e revisaram o dólar para R$ 5,20.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">A inflação persistente corrói o poder de compra do consumidor final e encarece os insumos da pequena empresa. Além disso, a previsão de juros mais altos no fim do ano reforça que o crédito continuará caro. Você precisa revisar as margens de lucro dos clientes para garantir que o repasse de custos dos fornecedores não seja absorvido pelo caixa da empresa.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Os economistas dos bancos estão avisando que a inflação vai fechar o ano mais alta do que o esperado. Isso significa que seus fornecedores vão continuar repassando aumentos. Precisamos olhar de perto a sua margem de lucro. Não adianta vender muito se o custo do produto estiver engolindo todo o seu ganho."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Reels</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"A inflação não está dando trégua e os juros vão continuar altos até o fim do ano. Sabe quem paga essa conta? A margem de lucro da sua empresa. Veja duas estratégias para proteger o seu caixa quando os preços dos fornecedores não param de subir."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Estadão — <a href="https://www.estadao.com.br/economia/focus-mercado-aumenta-projecao-inflacao-juros-pib-dolar/" style="color:#7A7872;">Estadão</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 03</div>
+      <h2 class="signal-title">Pequenos negócios são 97% das novas empresas abertas em maio</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">Levantamento do Sebrae, com base em dados da Receita Federal, mostrou que os pequenos negócios responderam por quase 97% das empresas abertas no país em maio, com 456 mil novos CNPJs no mês. No acumulado do ano, já são mais de 2,5 milhões de novos MEIs, microempresas e empresas de pequeno porte, alta de 10% sobre o mesmo período de 2025. O setor de serviços concentrou 64% das aberturas.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Esse volume de aberturas revela um mercado em expansão, mas também cheio de empreendedores de primeira viagem que abrem o CNPJ sem qualquer estrutura financeira. São clientes em potencial que precisam de orientação desde o primeiro dia, principalmente sobre separar a conta pessoal da conta da empresa e definir o pró-labore. É a oportunidade de captar o cliente no momento em que a sua orientação tem maior impacto.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Abrir a empresa foi o primeiro passo e muita gente está fazendo isso agora. Mas o que separa quem cresce de quem fecha em dois anos é a organização financeira desde o começo. Vamos já separar o seu dinheiro pessoal do dinheiro da empresa e definir o seu salário de sócio, para você enxergar com clareza se o negócio realmente dá lucro."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Carrossel no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Mais de 456 mil empresas foram abertas no Brasil só no último mês, e a maioria é de pequeno porte. Acabou de abrir o seu CNPJ? Arraste para o lado e veja os 3 primeiros passos financeiros para o seu negócio não virar mais uma estatística de empresa que fecha cedo."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Sebrae / Radar Pequenos Negócios — <a href="https://pt.linkedin.com/pulse/not%C3%ADcias-19-de-junho-sebrae-jwg2f" style="color:#7A7872;">Sebrae / Radar Pequenos Negócios</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 04</div>
+      <h2 class="signal-title">Pronampe se firma como crédito permanente e mais barato para o pequeno negócio</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Pronampe, programa de crédito para micro e pequenas empresas, consolidou-se como linha permanente e voltou ao foco dos empresários. Com aval do Fundo Garantidor de Operações (FGO) do governo, oferece juros mais baixos e prazos maiores que o crédito comum. Atende empresas com faturamento de até R$ 4,8 milhões, com limite de até 50% do faturamento anual, respeitando o teto de R$ 500 mil por operação.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Em um cenário de juros altos, o Pronampe é uma das poucas portas de crédito viáveis para o pequeno negócio que precisa de capital de giro ou investimento. Conhecer as regras permite que você oriente o cliente a comparar propostas entre bancos e, principalmente, a manter a contabilidade e as certidões em dia, já que a regularidade fiscal é o que destrava a aprovação.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Se você precisa de dinheiro para a empresa, antes de pegar aquele empréstimo caro do cheque especial, vamos olhar o Pronampe. É uma linha do governo com juros bem menores. Mas para o banco aprovar, sua empresa precisa estar com os impostos e as certidões em dia. Vamos organizar essa parte primeiro e depois cotar em alguns bancos para achar a melhor condição."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Mensagem de WhatsApp para clientes e prospects</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Oi [Nome], tudo bem? Com os juros do mercado nas alturas, vale lembrar que o Pronampe segue ativo, com crédito mais barato e garantia do governo para micro e pequenas empresas. Se você pensa em reforçar o caixa ou investir, me chama. A gente organiza a papelada e cota nos bancos para conseguir a melhor taxa."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Contadores / Jornal Contábil — <a href="https://www.contadores.cnt.br/noticias/empresariais/2026/06/19/pronampe-como-as-empresas-podem-acessar-a-linha-de-credito-federal.html" style="color:#7A7872;">Contadores / Jornal Contábil</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="cta">
+    <div class="cta-eyebrow">Compartilhe com outras consultoras</div>
+    <div class="cta-title">Sinais que importam,<br>toda semana.</div>
+    <a href="https://radarexpert.netlify.app/assinar.html" class="cta-btn">Assinar gratuitamente</a>
+  </div>
+  <div class="footer">
+    <div class="footer-wordmark">RADAR</div>
+    <div class="footer-sub">Expert</div>
+    <p class="footer-text">
+      EDIÇÃO #02 · 2026<br>
+      Curadoria estratégica para consultoras financeiras.<br><br>
+      <a href="{{ unsubscribe }}" style="color:#7A7872;">Cancelar inscrição</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
