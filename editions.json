@@ -1,5 +1,20 @@
 [
   {
+    "id": "02",
+    "numero": "#02",
+    "titulo": "O que merece a sua atenção esta semana",
+    "semana": "14 a 21 de Junho",
+    "ano": "2026",
+    "data_iso": "2026-06-21",
+    "arquivo": "editions/02.html",
+    "sinais": [
+      "Governo propõe elevar teto do MEI para R$ 130 mil, mas apenas a partir de 2027",
+      "Mercado eleva projeção de inflação pela 14ª semana e prevê juros mais altos",
+      "Pequenos negócios são 97% das novas empresas abertas em maio",
+      "Pronampe se firma como crédito permanente e mais barato para o pequeno negócio"
+    ]
+  },
+  {
     "id": "01",
     "numero": "#01",
     "titulo": "O que merece a sua atenção esta semana",
