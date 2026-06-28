@@ -1,0 +1,110 @@
+name: Criar campanha Brevo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'email-edicao-*.html'
+
+jobs:
+  criar-campanha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Identificar edição publicada
+        id: edicao
+        run: |
+          # Pega o arquivo email-edicao-XX.html adicionado neste push
+          ARQUIVO=$(git diff --name-only HEAD~1 HEAD | grep 'email-edicao-' | head -1)
+          NUMERO=$(echo "$ARQUIVO" | grep -oP '\d+')
+          echo "numero=$NUMERO" >> $GITHUB_OUTPUT
+          echo "arquivo=$ARQUIVO" >> $GITHUB_OUTPUT
+          echo "Edição detectada: #$NUMERO ($ARQUIVO)"
+
+      - name: Ler metadados da edição
+        id: meta
+        run: |
+          NUM="${{ steps.edicao.outputs.numero }}"
+          # Lê semana e ano do editions.json
+          SEMANA=$(node -e "const e=require('./editions.json').find(x=>x.id==='$NUM'); console.log(e.semana)")
+          ANO=$(node -e "const e=require('./editions.json').find(x=>x.id==='$NUM'); console.log(e.ano)")
+          echo "semana=$SEMANA" >> $GITHUB_OUTPUT
+          echo "ano=$ANO" >> $GITHUB_OUTPUT
+          echo "Semana: $SEMANA | Ano: $ANO"
+
+      - name: Criar e agendar campanha no Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          NUM="${{ steps.edicao.outputs.numero }}"
+          SEMANA="${{ steps.meta.outputs.semana }}"
+          ANO="${{ steps.meta.outputs.ano }}"
+          ARQUIVO="${{ steps.edicao.outputs.arquivo }}"
+
+          # Segunda-feira seguinte às 9h UTC (6h BRT)
+          PROXIMA_SEGUNDA=$(node -e "
+            const d = new Date();
+            const diasAteSeg = (1 - d.getDay() + 7) % 7 || 7;
+            d.setDate(d.getDate() + diasAteSeg);
+            d.setUTCHours(9, 0, 0, 0);
+            console.log(d.toISOString());
+          ")
+
+          HTML_CONTENT=$(cat "$ARQUIVO")
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://api.brevo.com/v3/emailCampaigns \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "Content-Type: application/json" \
+            -H "accept: application/json" \
+            -d "$(node -e "
+              const html = require('fs').readFileSync('$ARQUIVO', 'utf8');
+              console.log(JSON.stringify({
+                name: 'Radar Expert — Edição #$NUM — $SEMANA de $ANO',
+                subject: '📡 Radar Expert #$NUM — O que merece sua atenção esta semana',
+                sender: { name: 'Radar Expert', email: 'josetesantos@gmail.com' },
+                type: 'classic',
+                htmlContent: html,
+                recipients: { listIds: [5] },
+                scheduledAt: '$PROXIMA_SEGUNDA'
+              }));
+            ")")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          echo "HTTP: $HTTP_CODE"
+          echo "Resposta: $BODY"
+
+          if [ "$HTTP_CODE" = "201" ]; then
+            CAMPAIGN_ID=$(echo "$BODY" | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>console.log(JSON.parse(d).id))")
+            echo "✅ Campanha criada — ID: $CAMPAIGN_ID"
+            echo "⏰ Agendada para: $PROXIMA_SEGUNDA (segunda às 6h BRT)"
+          else
+            echo "❌ Erro ao criar campanha: $BODY"
+            exit 1
+          fi
+
+      - name: Enviar e-mail de status para Josete
+        if: always()
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          NUM="${{ steps.edicao.outputs.numero }}"
+          STATUS="${{ job.status }}"
+          DATA=$(date '+%d/%m/%Y %H:%M')
+
+          if [ "$STATUS" = "success" ]; then
+            ASSUNTO="[Radar Expert] ✅ Edição #$NUM publicada com sucesso — $DATA"
+            CORPO="<h2 style='color:#2A2A2A;font-family:Georgia,serif'>Radar Expert — Publicação Automática</h2><p><strong>Status:</strong> ✅ Sucesso</p><p><strong>Edição:</strong> #$NUM</p><p><strong>Site:</strong> <a href='https://radarexpert.netlify.app'>radarexpert.netlify.app</a></p><p><strong>Campanha Brevo:</strong> agendada para segunda-feira às 6h BRT</p><p style='color:#7A7872;font-size:12px;margin-top:32px'>Radar Expert Bot · $DATA</p>"
+          else
+            ASSUNTO="[Radar Expert] ❌ Erro na publicação — $DATA"
+            CORPO="<h2 style='color:#2A2A2A;font-family:Georgia,serif'>Radar Expert — Publicação Automática</h2><p><strong>Status:</strong> ❌ Erro na criação da campanha Brevo</p><p>Verifique o log em: <a href='https://github.com/josetesantos-source/radarexpert/actions'>github.com/josetesantos-source/radarexpert/actions</a></p><p style='color:#7A7872;font-size:12px;margin-top:32px'>Radar Expert Bot · $DATA</p>"
+          fi
+
+          curl -s -X POST https://api.brevo.com/v3/smtp/email \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"sender\":{\"name\":\"Radar Expert Bot\",\"email\":\"josetesantos@gmail.com\"},\"to\":[{\"email\":\"josetesantos@gmail.com\",\"name\":\"Josete\"}],\"subject\":\"$ASSUNTO\",\"htmlContent\":\"$CORPO\"}"
+
+          echo "E-mail de status enviado para josetesantos@gmail.com"
