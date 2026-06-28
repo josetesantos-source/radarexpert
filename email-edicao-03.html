@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar Expert — Edição #03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;padding:0;background:#F2EFE7;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:#34332F;-webkit-font-smoothing:antialiased;}
+  p,h1,h2,h3{margin:0;}h1,h2,h3{font-weight:400;}a{color:#A07000;}
+  .wrapper{max-width:600px;margin:0 auto;padding:24px 16px 60px;}
+  .header{padding:48px 0 36px;border-bottom:1px solid #E9E3D4;}
+  .logo-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+  .wordmark-main{font-family:'Gilda Display',Georgia,serif;font-size:30px;letter-spacing:.14em;color:#2A2A2A;line-height:1;}
+  .wordmark-sub{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#A07000;margin-top:3px;}
+  .meta{font-size:11px;font-weight:600;letter-spacing:.20em;text-transform:uppercase;color:#7A7872;margin-bottom:16px;}
+  .meta-dot{color:#EEB811;margin:0 8px;}
+  .hero-title{font-family:'Gilda Display',Georgia,serif;font-size:36px;color:#2A2A2A;line-height:1.13;letter-spacing:-.01em;}
+  .selecao{padding:24px 0 18px;display:flex;align-items:center;gap:16px;}
+  .selecao-text{font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#A07000;white-space:nowrap;}
+  .selecao-rule{flex:1;height:1px;background:#E9E3D4;}
+  .intro{font-size:16px;line-height:1.74;color:#34332F;padding-bottom:6px;}
+  .section-div{display:flex;align-items:center;gap:14px;margin:48px 0 26px;}
+  .section-div-label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A07000;white-space:nowrap;}
+  .section-div-rule{flex:1;height:1px;background:#E9E3D4;}
+  .signal{background:#FBF9F3;border:1px solid #D8D0BC;border-radius:12px;overflow:hidden;margin-bottom:22px;}
+  .signal-hd{padding:24px 26px 20px;border-bottom:1px solid #E9E3D4;}
+  .signal-num{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#A07000;margin-bottom:8px;}
+  .signal-title{font-family:'Gilda Display',Georgia,serif;font-size:22px;color:#2A2A2A;line-height:1.22;}
+  .signal-bd{padding:0 26px 26px;}
+  .sec{padding-top:20px;}.sec+.sec{margin-top:16px;padding-top:18px;border-top:1px solid #E9E3D4;}
+  .sec-label{font-size:10px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:#A07000;margin-bottom:8px;}
+  .sec-text{font-size:14px;line-height:1.74;color:#34332F;}
+  .importa-box{background:#F6F2E9;border-left:3px solid #C99412;border-radius:0 8px 8px 0;padding:12px 16px;font-size:14px;line-height:1.72;color:#34332F;}
+  .quote{background:#2A2A2A;border-radius:10px;padding:20px 22px;}
+  .quote-hint{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#EEB811;margin-bottom:9px;}
+  .quote-text{font-size:14px;font-style:italic;line-height:1.72;color:#F2EFE7;}
+  .sugestao{background:#FBF1C9;border:1px solid rgba(160,112,0,.18);border-radius:10px;padding:16px 18px;}
+  .sugestao-format{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7E5800;background:rgba(160,112,0,.13);border-radius:100px;padding:4px 12px;margin-bottom:10px;}
+  .sugestao-gancho-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#A07000;margin-bottom:6px;}
+  .sugestao-gancho{font-size:13px;line-height:1.66;color:#2A2A2A;font-style:italic;}
+  .source-link{font-size:12px;color:#7A7872;}
+  .cta{background:#2A2A2A;border-radius:14px;padding:44px 32px;text-align:center;margin-top:48px;}
+  .cta-eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#EEB811;margin-bottom:12px;}
+  .cta-title{font-family:'Gilda Display',Georgia,serif;font-size:30px;color:#F2EFE7;line-height:1.16;margin-bottom:28px;}
+  .cta-btn{display:inline-block;background:#EEB811;color:#2A2A2A;font-family:'DM Sans',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-decoration:none;padding:13px 34px;border-radius:8px;}
+  .footer{margin-top:56px;padding-top:32px;border-top:1px solid #E9E3D4;text-align:center;}
+  .footer-wordmark{font-family:'Gilda Display',Georgia,serif;font-size:20px;letter-spacing:.14em;color:#2A2A2A;}
+  .footer-sub{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#A07000;margin-top:3px;}
+  .footer-text{font-size:12px;color:#7A7872;margin-top:14px;line-height:1.72;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div style="text-align:center;padding:16px 0 28px;">
+    <a href="https://radarexpert.netlify.app" style="display:inline-flex;align-items:center;gap:8px;background:#FBF9F3;border:1px solid #D8D0BC;border-radius:100px;padding:9px 20px;font-family:'DM Sans',Arial,sans-serif;font-size:12px;font-weight:600;color:#7A7872;text-decoration:none;">
+      ↗ Leia esta edição com animação no site
+    </a>
+  </div>
+  <div class="header">
+    <div class="logo-row">
+      <svg width="46" height="46" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="25" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="17" stroke="#D8D0BC" stroke-width=".75"/>
+        <circle cx="26" cy="26" r="9"  stroke="#D8D0BC" stroke-width=".75"/>
+        <path d="M26 26 L26 1 A25 25 0 0 1 37.8 5.5 Z" fill="#EEB811" opacity=".30"/>
+        <line x1="26" y1="26" x2="26" y2="1" stroke="#A07000" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+        <circle cx="36" cy="12" r="2.8" fill="#EEB811"/>
+        <circle cx="13" cy="34" r="2" fill="#A07000" opacity=".7"/>
+        <circle cx="26" cy="26" r="2.5" fill="#A07000"/>
+      </svg>
+      <div>
+        <div class="wordmark-main">RADAR</div>
+        <div class="wordmark-sub">Expert</div>
+      </div>
+    </div>
+    <div class="meta">
+      EDIÇÃO <strong style="color:#A07000;font-weight:700;">#03</strong>
+      <span class="meta-dot">·</span>
+      SEMANA DE 21 A 28 DE JUNHO
+      <span class="meta-dot">·</span>
+      2026
+    </div>
+    <h1 class="hero-title">O que merece a sua atenção esta semana.</h1>
+  </div>
+  <div class="selecao">
+    <span class="selecao-text">Selecionamos o que merece a sua atenção nesta semana</span>
+    <div class="selecao-rule"></div>
+  </div>
+  <p class="intro">Nesta edição, cobrimos <strong style="color:#2A2A2A;font-weight:600;">5 sinais</strong> que movimentaram o cenário das micro e pequenas empresas. Cada sinal vem com análise prática, um script para usar com o cliente e uma sugestão de conteúdo para as redes.</p>
+  <div class="section-div">
+    <span class="section-div-label">No Radar</span>
+    <div class="section-div-rule"></div>
+  </div>
+  
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 01</div>
+      <h2 class="signal-title">Nota Fiscal padrão nacional será obrigatória para o Simples em setembro</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Comitê Gestor do Simples Nacional definiu que, a partir de 1º de setembro de 2026, todas as micro e pequenas empresas do regime deverão emitir a Nota Fiscal de Serviço Eletrônica (NFS-e) exclusivamente pelo sistema nacional padronizado. A medida, que estava prevista para janeiro e foi adiada, substitui os sistemas municipais e visa preparar a base de dados para os novos impostos da Reforma Tributária. Para o MEI, a regra já vale desde o ano passado.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Mudanças de sistema sempre geram falhas operacionais nos primeiros dias, o que pode atrasar o faturamento e o recebimento dos clientes. Você precisa alertar as empresas que prestam serviço para já testarem o Emissor Nacional ou integrarem seus sistemas de gestão (ERPs) via API, garantindo que o fluxo de caixa não seja interrompido em setembro por notas travadas.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"A partir de setembro, o site da prefeitura não vai mais emitir nota fiscal de serviço para quem é do Simples. Vai mudar tudo para um sistema único do governo federal. Para a gente não correr o risco de você ficar sem conseguir faturar e receber dos seus clientes no mês que vem, vamos acessar esse sistema novo hoje e já deixar o seu cadastro pronto e testado."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Carrossel no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Atenção se você é prestador de serviço no Simples Nacional: a partir de setembro, o jeito de emitir nota fiscal vai mudar. Arraste para o lado para entender o novo sistema nacional e o que você precisa fazer agora para não ficar com o faturamento travado no mês que vem."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Seu Dinheiro — <a href="https://www.seudinheiro.com/2026/seu-negocio/obrigacao-para-pequenos-negocios-nota-fiscal-comeca-a-valer-em-setembro-para-o-simples-nacional-como-funciona-a-nfs-e-padrao-giov/" style="color:#7A7872;">Seu Dinheiro</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 02</div>
+      <h2 class="signal-title">Receita adia para 2027 a exigência de CNPJ para autônomos</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">A Receita Federal prorrogou para 1º de janeiro de 2027 a regra da Reforma Tributária que obrigaria pessoas físicas (autônomos, prestadores de serviço e produtores rurais) com faturamento acima de R$ 40,5 mil anuais a abrirem um CNPJ para emitir documentos fiscais. O adiamento ocorreu para que o governo desenvolva um sistema simplificado de cadastro. Quem já é MEI continua com o seu CNPJ normalmente, sem nenhuma alteração.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">O adiamento acalma os ânimos de muitos clientes que atuam como pessoa física e estavam assustados com a mudança prevista para julho. No entanto, a criação da figura do "nanoempreendedor" mostra que o cerco da Receita está fechando. É o momento ideal para você oferecer um planejamento tributário, mostrando que a formalização antecipada pode trazer economia de impostos antes mesmo da obrigatoriedade legal.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"O governo adiou para 2027 aquela regra que obrigaria você a abrir um CNPJ por causa do seu faturamento. Isso nos dá fôlego, mas o recado está dado: a Receita está de olho em quem trabalha como pessoa física. Em vez de esperar a corda apertar no ano que vem, vamos sentar e fazer as contas. Pode ser que abrir uma empresa agora faça você pagar menos imposto do que paga hoje no seu CPF."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Reels</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Você trabalha como autônomo e ouviu dizer que ia ser obrigado a abrir um CNPJ agora em julho? Pode respirar fundo: a Receita Federal adiou essa regra para 2027. Mas não comemore antes de fazer uma conta básica que pode estar fazendo você perder dinheiro todo mês."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Agência Brasil — <a href="https://agenciabrasil.ebc.com.br/economia/noticia/2026-06/cnpj-de-autonomos-prestadores-e-produtores-rurais-e-adiado-para-2027" style="color:#7A7872;">Agência Brasil</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 03</div>
+      <h2 class="signal-title">Inflação desacelera em junho, mas conta de luz já pesa no caixa</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O IPCA-15, prévia da inflação oficial, ficou em 0,41% em junho, perdendo força pelo segundo mês consecutivo graças à queda nos preços dos alimentos no domicílio. No entanto, o custo da energia elétrica residencial subiu 2,04%, sendo o item que mais pressionou o índice no mês, reflexo direto do acionamento da bandeira tarifária amarela pela Aneel devido à escassez de chuvas.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">A bandeira amarela (e a possível transição para vermelha nos próximos meses) aumenta o custo fixo de clientes que dependem de energia intensiva, como padarias, minimercados, indústrias leves e clínicas. Você precisa revisar a estrutura de custos fixos desses negócios imediatamente, ajustando o ponto de equilíbrio e, se necessário, o preço de venda para proteger a margem de lucro.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"A inflação geral até deu uma trégua, mas você já deve ter notado que a conta de luz veio mais cara por causa da bandeira amarela. Como a falta de chuva deve continuar, a energia vai pesar mais no nosso custo fixo nos próximos meses. Vamos revisar o seu preço de venda para garantir que esse aumento da luz não saia do seu lucro."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Mensagem de WhatsApp para clientes e prospects</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Oi [Nome], tudo bem? Saiu hoje o dado da inflação e, como esperado, a conta de luz já foi a grande vilã do mês por causa da bandeira amarela. Como a energia é um custo pesado na sua operação, tirei um tempo hoje à tarde para revisar a sua planilha de custos fixos. Quando tiver cinco minutos, me liga para a gente ajustar a sua margem."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Agência Brasil — <a href="https://agenciabrasil.ebc.com.br/economia/noticia/2026-06/previa-da-inflacao-perde-forca-pelo-2o-mes-e-fecha-junho-em-041" style="color:#7A7872;">Agência Brasil</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 04</div>
+      <h2 class="signal-title">Pesquisa revela que uso de Inteligência Artificial nas pequenas empresas ainda é superficial</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">Um levantamento inédito do Sebrae Santa Catarina mostrou que 85,5% dos pequenos negócios já tiveram contato com ferramentas de Inteligência Artificial. Contudo, o nível de maturidade no uso é baixíssimo: a média foi de apenas 8,6 pontos em uma escala de 24. A maioria usa a IA apenas para criar posts em redes sociais, enquanto 61% jamais aplicaram a tecnologia para analisar dados, melhorar processos ou apoiar a tomada de decisão financeira.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Esse dado é uma mina de ouro. Ele prova que os empresários sabem que a IA existe, mas não sabem como usá-la para ganhar dinheiro ou eficiência. Você pode se posicionar como a profissional que traz a IA para a vida real: usando ferramentas para automatizar o fluxo de caixa, cruzar dados de vendas e gerar relatórios preditivos, entregando um serviço muito mais rápido e moderno que a concorrência.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Eu vi que você já está usando o ChatGPT para escrever os textos do Instagram da loja, o que é ótimo. Mas a inteligência artificial pode fazer muito mais pela sua empresa. Eu trouxe uma ferramenta nova para o nosso atendimento que vai ler todo o seu histórico de vendas e me ajudar a prever exatamente quanto você vai precisar de caixa no mês que vem, sem a gente perder horas em planilhas."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Post simples (imagem única) no Instagram</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Uma pesquisa do Sebrae mostrou que 85% das pequenas empresas já usam Inteligência Artificial, mas a maioria só faz post para o Instagram. A verdadeira revolução da IA não é escrever textos, é organizar o seu financeiro. Quer saber como a tecnologia pode prever furos no seu caixa antes que eles aconteçam? Me mande um direct."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Conecta SC — <a href="https://conectasc.com.br/2026/06/23/sebrae-transformacao-digital-em-santa-catarina/" style="color:#7A7872;">Conecta SC</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="signal">
+    <div class="signal-hd">
+      <div class="signal-num">Sinal 05</div>
+      <h2 class="signal-title">Governo prepara "Refis dos MEIs" com parcelamento em até 12 anos</h2>
+    </div>
+    
+    <div class="signal-bd">
+      <div class="sec">
+        <div class="sec-label">Resumo</div>
+        <p class="sec-text">O Ministério do Empreendedorismo confirmou que prepara um programa de renegociação de dívidas tributárias voltado ao microempreendedor individual. A proposta permite parcelar débitos de até R$ 20 mil em até 145 meses (pouco mais de 12 anos), com descontos que podem chegar a 70% e parcela mínima de R$ 25. A medida deve beneficiar entre 3 e 4 milhões de MEIs inadimplentes ou que perderam o enquadramento por atraso no pagamento do DAS.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Por que isso importa para você, consultora</div>
+        <div class="importa-box">Muitos clientes MEI perderam o CNPJ ou estão com o nome sujo por causa de DAS atrasados, o que os impede de emitir nota, pegar crédito e crescer. Este programa é a porta de entrada para você recuperar esses clientes informais, regularizar a situação deles e transformá-los em contas recorrentes de consultoria. Vale mapear desde já quem na sua carteira está nessa situação para agir assim que o programa for aberto.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Como explicar isso ao seu cliente</div>
+        <div class="quote">
+          <div class="quote-hint">Script para usar</div>
+          <p class="quote-text">"Sei que você ficou com aquele atraso do imposto do MEI acumulado e parou de pagar porque a conta só crescia. O governo vai abrir um programa que perdoa boa parte dessa dívida, com desconto de até 70%, e deixa você parcelar o resto em parcelas que cabem no bolso, a partir de R$ 25. Vamos organizar os seus números agora para, assim que abrir, você regularizar o CNPJ e voltar a emitir nota."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Sugestão de conteúdo</div>
+        <div class="sugestao">
+          <div class="sugestao-format">Reels</div>
+          <div class="sugestao-gancho-label">Gancho</div>
+          <p class="sugestao-gancho">"Você é MEI e parou de pagar o imposto porque a dívida virou uma bola de neve? Vem aí um programa do governo que pode dar até 70% de desconto e parcelar o resto em mais de 10 anos. Não deixe o seu CNPJ ser cancelado antes de saber como entrar nessa renegociação."</p>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label">Fonte</div>
+        <p class="source-link">Exame — <a href="https://exame.com/brasil/mei-podera-parcelar-dividas-em-ate-12-anos-governo-prepara-programa-diz-ministro/" style="color:#7A7872;">Exame</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="cta">
+    <div class="cta-eyebrow">Compartilhe com outras consultoras</div>
+    <div class="cta-title">Sinais que importam,<br>toda semana.</div>
+    <a href="https://radarexpert.netlify.app/assinar.html" class="cta-btn">Assinar gratuitamente</a>
+  </div>
+  <div class="footer">
+    <div class="footer-wordmark">RADAR</div>
+    <div class="footer-sub">Expert</div>
+    <p class="footer-text">
+      EDIÇÃO #03 · 2026<br>
+      Curadoria estratégica para consultoras financeiras.<br><br>
+      <a href="{{ unsubscribe }}" style="color:#7A7872;">Cancelar inscrição</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

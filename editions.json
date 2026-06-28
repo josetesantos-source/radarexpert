@@ -1,5 +1,21 @@
 [
   {
+    "id": "03",
+    "numero": "#03",
+    "titulo": "O que merece a sua atenção esta semana",
+    "semana": "21 a 28 de Junho",
+    "ano": "2026",
+    "data_iso": "2026-06-28",
+    "arquivo": "editions/03.html",
+    "sinais": [
+      "Nota Fiscal padrão nacional será obrigatória para o Simples em setembro",
+      "Receita adia para 2027 a exigência de CNPJ para autônomos",
+      "Inflação desacelera em junho, mas conta de luz já pesa no caixa",
+      "Pesquisa revela que uso de Inteligência Artificial nas pequenas empresas ainda é superficial",
+      "Governo prepara \"Refis dos MEIs\" com parcelamento em até 12 anos"
+    ]
+  },
+  {
     "id": "02",
     "numero": "#02",
     "titulo": "O que merece a sua atenção esta semana",
