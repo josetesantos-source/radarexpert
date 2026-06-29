@@ -217,7 +217,7 @@ ${signaisHtml}
   <div class="nl-footer-wordmark">RADAR</div>
   <div class="nl-footer-sub">Expert</div>
   <p class="nl-footer-text">
-    EDIÇÃO ${edicaoNum} · ${ed.semana.split(' de ')[1]?.toUpperCase() || ed.semana.toUpperCase()} · ${ed.ano}<br>
+    EDIÇÃO ${edicaoNum} · ${(ed.semana.split(' de ')[1] || ed.semana).toUpperCase()} · ${ed.ano}<br>
     Curadoria estratégica para consultoras financeiras que atendem micro e pequenas empresas.
   </p>
   <div class="nl-footer-rule"></div>
@@ -357,7 +357,7 @@ const novaEdicao = {
   semana: ed.semana,
   ano: ed.ano,
   data_iso: ed.data_iso,
-  arquivo: `editions/${padded}.html`,
+  arquivo: `editions/reader.html?id=${padded}`,
   sinais: ed.sinais.map(s => s.titulo)
 };
 editions.unshift(novaEdicao);

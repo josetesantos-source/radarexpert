@@ -6,7 +6,7 @@
     "semana": "21 a 28 de Junho",
     "ano": "2026",
     "data_iso": "2026-06-28",
-    "arquivo": "editions/03.html",
+    "arquivo": "editions/reader.html?id=03",
     "sinais": [
       "Nota Fiscal padrão nacional será obrigatória para o Simples em setembro",
       "Receita adia para 2027 a exigência de CNPJ para autônomos",
@@ -22,7 +22,7 @@
     "semana": "14 a 21 de Junho",
     "ano": "2026",
     "data_iso": "2026-06-21",
-    "arquivo": "editions/02.html",
+    "arquivo": "editions/reader.html?id=02",
     "sinais": [
       "Governo propõe elevar teto do MEI para R$ 130 mil, mas apenas a partir de 2027",
       "Mercado eleva projeção de inflação pela 14ª semana e prevê juros mais altos",
@@ -37,7 +37,7 @@
     "semana": "11 a 18 de Junho",
     "ano": "2026",
     "data_iso": "2026-06-18",
-    "arquivo": "editions/01.html",
+    "arquivo": "editions/reader.html?id=01",
     "sinais": [
       "Selic cai para 14,25%",
       "Inadimplência atinge 8,5 milhões de PMEs",
